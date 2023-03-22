@@ -1,0 +1,92 @@
+[
+  {
+    "id": "aa5234be-0e64-4368-b256-b4c447b9d4a6",
+    "url": "https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889",
+    "image": {
+      "url": "https://source.unsplash.com/gTQbZXL417Q/768x444",
+      "alt": ""
+    },
+    "title": "Making Sense of React Hooks",
+    "description": "What are hooks? why? and how to use them, an insight into Functional Programming",
+    "author": {
+      "image": "/images/author-dan-abramov.jpeg",
+      "name": "Dan Abramov"
+    },
+    "date": "Oct 31, 2018"
+  },
+  {
+    "id": "74ffd799-b85b-45d1-a466-01b3431a5f0f",
+    "url": "https://medium.com/free-code-camp/the-react-handbook-b71c27b0a795",
+    "image": {
+      "url": "https://source.unsplash.com/EaB4Ml7C7fE/768x444",
+      "alt": "Crockford's coding conventions"
+    },
+    "title": "The React Handbook",
+    "description": "The basic building blocks to become a great React developer",
+    "author": {
+      "image": "/images/author-flavio-copes.jpeg",
+      "name": "Flavio Copes"
+    },
+    "date": "Jan 9, 2019"
+  },
+  {
+    "id": "acb7b98e-49e1-4520-8f3d-15fcd51733ff",
+    "url": "https://www.crockford.com/code.html",
+    "image": {
+      "url": "https://source.unsplash.com/KDBWMSq9wh0/768x444",
+      "alt": "Code Conventions for JavaScript"
+    },
+    "title": "Code Conventions for JavaScript",
+    "description": "This is a set of coding conventions and rules for use in JavaScript programming.",
+    "author": {
+      "image": "/images/author-douglas-crockford.jpeg",
+      "name": "Douglas Crockford"
+    },
+    "date": "May 15, 2019"
+  },
+  {
+    "id": "b3447c7f-8530-4700-8c31-a622bd6d2678",
+    "url": "",
+    "image": {
+      "url": "https://source.unsplash.com/u7dy-n4uZVk/768x444",
+      "alt": ""
+    },
+    "title": "FP vs OOP, Immutable vs Mutable",
+    "description": "Which side of the spectrum do you belong to",
+    "author": {
+      "image": "/images/author-todd-motto.jpeg",
+      "name": "Todd Motto"
+    },
+    "date": "Jan 28, 2020"
+  },
+  {
+    "id": "5198f57a-4707-455f-85b7-94cbc46bae86",
+    "url": "",
+    "image": {
+      "url": "https://source.unsplash.com/fvMeP4ml4bU/768x444",
+      "alt": ""
+    },
+    "title": "10 React mini-patterns",
+    "description": "From JavaScript Design Patterns comes mini-patters for React",
+    "author": {
+      "image": "/images/author-noah-stokes.jpeg",
+      "name": "Noah Stokes"
+    },
+    "date": "Feb 26, 2020"
+  },
+  {
+    "id": "e14c234c-03cb-4103-9d59-a7042b95c6c6",
+    "url": "",
+    "image": {
+      "url": "https://source.unsplash.com/i25aqE_YUZs/768x444",
+      "alt": ""
+    },
+    "title": "JavaScript and accessibility!",
+    "description": "Tips on how to improve the accessibility of your JavaScript components and provide users with more and better ways to interact with your website or web app.",
+    "author": {
+      "image": "/images/author-russ-weakley.jpeg",
+      "name": "Russ Weakley"
+    },
+    "date": "Nov 07, 2020"
+  }
+]

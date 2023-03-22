@@ -1,0 +1,87 @@
+[
+  {
+    "id": "aa5234be-0e64-4368-b256-b4c447b9d4a6",
+    "header": {
+      "image": {
+        "url": "",
+        "alt": "B"
+      },
+      "title": "The Card Component",
+      "description": "25 May, 2020",
+      "url": ""
+    },
+    "body": {
+      "image": {
+        "url": "https://images.unsplash.com/photo-1527480956862-8f0f41a34199?w=1600&h=969",
+        "alt": ""
+      },
+      "title": "",
+      "description": "The basic layout consists of Header, Media, Body and Actions Panel. The contents of Actions Panel is left aligned by default."
+    },
+    "actions": [
+      {
+        "icon": "",
+        "screenReaderText": "",
+        "text": "learn more"
+      },
+      {
+        "icon": "",
+        "screenReaderText": "",
+        "text": "share"
+      }
+    ]
+  },
+  {
+    "id": "74ffd799-b85b-45d1-a466-01b3431a5f0f",
+    "header": {
+      "image": {
+        "url": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?h=80&w=80",
+        "alt": ""
+      },
+      "title": "Hank Von-Koder",
+      "description": "04 July, 2020",
+      "url": "#"
+    },
+    "body": {
+      "image": {
+        "url": "https://images.unsplash.com/photo-1457364887197-9150188c107b?w=1600&h=600",
+        "alt": ""
+      },
+      "title": "The Variant",
+      "description": "This variation of the card has the Header displayed at the bottom with the isFooter flag. The Actions Panel should NOT be used as the Header replaces it with its own Action."
+    },
+    "actions": []
+  },
+  {
+    "id": "b3447c7f-8530-4700-8c31-a622bd6d2678",
+    "header": {
+      "image": {
+        "url": "",
+        "alt": ""
+      },
+      "title": "",
+      "description": "",
+      "url": ""
+    },
+    "body": {
+      "image": {
+        "url": "https://images.unsplash.com/photo-1560529178-855fa2041193?w=1600&h=969",
+        "alt": ""
+      },
+      "title": "The Headless Chicken",
+      "description": "In this instance, the Header is not used, the Action panel is configured to be right aligned using icons, each having relevant text for screen readers to provide better accessibility."
+    },
+    "actions": [
+      {
+        "icon": "heart",
+        "screenReaderText": "Click here to book mark",
+        "text": ""
+      },
+      {
+        "icon": "share",
+        "screenReaderText": "Click here to share",
+        "text": ""
+      }
+    ]
+  }
+]

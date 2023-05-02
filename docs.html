@@ -47,7 +47,7 @@
 
     :root {
       --color-primary: #1c1e21;
-      --color-secondary: #000;
+      /* --color-secondary: #000; */
       /* OR */
       --color-secondary: #333;
       --background-primary: #fff;
@@ -63,28 +63,15 @@
       --color-primary: #e3e3e3;
       --color-secondary: #fff;
       --background-primary: #182230;
-      --background-secondary: #1f2d40;
-      /* --background-secondary: #161515; */
+      /* --background-secondary: #1f2d40; */
+      /* OR */
+      --background-secondary: #161515;
       --background-secondary-translucent: rgba(31, 45, 64, 0.80);
-      --background-tertiary: #161515;
-      /* --background-tertiary: #1f2d40; */
+      /* --background-tertiary: #161515; */
+      /* OR */
+      --background-tertiary: #1f2d40;
       --border-primary: #444950;
       --border-secondary: #8d949e;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color-primary: #e3e3e3;
-        --color-secondary: #fff;
-        --background-primary: #182230;
-        --background-secondary: #1f2d40;
-        /* --background-secondary: #161515; */
-        --background-secondary-translucent: rgba(31, 45, 64, 0.80);
-        --background-tertiary: #161515;
-        /* --background-tertiary: #1f2d40; */
-        --border-primary: #444950;
-        --border-secondary: #8d949e;
-      }
     }
 
     html {
@@ -108,6 +95,14 @@
       background-color: var(--background-primary);
     }
 
+    a {
+      color: #ff6995;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+    }
+
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -115,6 +110,21 @@
       margin: 0 auto;
       padding-right: 16px;
       padding-left: 16px;
+    }
+
+    .button {
+      min-width: auto;
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      appearance: none;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      color: #fff;
+      background-color: #ff6995;
+      border: 2px solid #ff6995;
+      border-radius: 4px;
     }
 
     .align-right {
@@ -140,6 +150,10 @@
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);;
     }
 
+    .header .button:not(:first-child) {
+      margin-left: 16px;
+    }
+
     .header + div {
       padding-top: 60px;
     }
@@ -149,12 +163,11 @@
       position: fixed;
       z-index: 2;
       left: -320px;
-      left: 0;
       text-align: right;
       width: 320px;
       height: 100%;
       padding-top: 24px;
-      transition: left 300ms cubic-bezier(0.2, 0, 0, 1) 0s;
+      transition: left 300ms cubic-bezier(0.2, 0, 0, 1);
     }
 
     .nav h2 {
@@ -172,11 +185,21 @@
     }
 
     .nav ul li.active {
-      position: relative;
       color: #ff6995;
     }
 
-    .nav ul li.active:after {
+    .nav ul li a {
+      position: relative;
+      display: block;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .nav ul li a.active {
+      color: #ff6995;
+    }
+
+    .nav ul li a.active:after {
       content: "";
       position: absolute;
       right: -16px;
@@ -195,12 +218,33 @@
 
     .main:before {
       content: "";
+      opacity: 0;
+      visibility: hidden;
       position: fixed;
       top: 0;
       right: -16px;
       bottom: 0;
       left: -16px;
       background-color: rgba(0, 0, 0, 0.6);
+      transition: 300ms cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .section {
+      padding: 0 0 48px;
+    }
+
+    /* .section__heading:target {
+      padding-top: 24px;
+    } */
+
+    .section__heading,
+    .section p {
+      margin: 0 0 24px;
+    }
+
+    .section__heading:last-child,
+    .section p:last-child {
+      margin-bottom: 0;
     }
 
     .with-border {
@@ -208,11 +252,22 @@
       border: 2px solid var(--border-secondary);
     }
 
-    a {
-      color: #ff6995;
+    @media screen and (max-width: 991px) {
+      .menu-open .nav {
+        left: 0;
+      }
+
+      .menu-open .main:before {
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     @media screen and (min-width: 992px) {
+      .menu {
+        display: none;
+      }
+
       .nav {
         background-color: transparent;
         left: auto;
@@ -226,15 +281,29 @@
         margin-left: 320px;
         padding-left: 16px;
       }
-
-      .main:before {
-        display: none;
-      }
     }
   </style>
+  <script>
+    (function () {
+      document.addEventListener('DOMContentLoaded', () => {
+        const body = document.body;
+        const menu = document.getElementById('menu');
+        const mode = document.getElementById('mode');
+
+        mode.addEventListener('click', () => {
+          body.classList.toggle('dark-mode');
+        });
+
+        menu.addEventListener('click', () => {
+          body.classList.toggle('menu-open');
+        });
+      });
+    })();
+  </script>
   <header class="header">
     <div class="container align-right">
-      <span>Main navigation&nbsp;<a href="#">link</a>
+      <button id="mode" class="button">mode</button>
+      <button id="menu" class="button menu">menu</button>
     </div>
   </header>
   <div class="container">
@@ -243,16 +312,33 @@
         <li>
           <h2>Basics</h2>
           <ul>
-            <li class="active">Introduction and motivation</li>
-            <li>Installation</li>
-            <li>Getting started</li>
-            <li>Prop based styles</li>
-            <li>Nested selectors</li>
-            <li>Pseudo classes / elements</li>
-            <li>Media Queries</li>
-            <li>Global styles</li>
-            <li>Extending styles</li>
-            <li>Style another component</li>
+            <li>
+              <a href="#introduction-and-motivation">Introduction and motivation</a>
+            </li>
+            <li>
+              <a href="#installation">Installation</a>
+            </li>
+            <li>
+              <a href="#getting-started" class="active">Getting started</a>
+            </li>
+            <li>
+              <a href="#prop-based-styles">Prop based styles</a>
+            </li>
+            <li>
+              <a href="#nested-selectors">Nested selectors</a>
+            </li>
+            <li>
+              <a href="#pseudo-styles">Pseudo styles</a>
+            </li>
+            <li>
+              <a href="#media-queries">Media Queries</a>
+            </li>
+            <li>
+              <a href="#extending-styles">Extending styles</a>
+            </li>
+            <li>
+              <a href="#style-another-component">Style another component</a>
+            </li>
           </ul>
         </li>
       <li><h2>Advanced</h2></li>
@@ -261,15 +347,85 @@
     </nav>
 
     <main class="main">
-      <div class="with-border">
+      <h1>Basics</h1>
+
+      <section class="section">
+        <h2 class="section__heading" id="introduction-and-motivation">Introduction and motivation</h2>
+
         <p>A high performance and easy to use CSS-in-JS library with support for server-side rendering. Built similar to other popular libraries, with a simpler API and providing a great overall developer experience.</p>
         <p>Styles are defined using Object Literal syntax, meaning instead of writing properties in <code>kebab-case</code> like regular CSS, they are in <code>camelCase</code> eg: <code>max-width</code> would be <code>maxWidth</code>. Don't worry, Styled provides autocompletion and type checking for CSS properties and values thanks to <a data-is-external-link="true" href="https://github.com/frenic/csstype#readme" rel="nofollow">CSSType</a>.</p>
-        <p>There is also a way to define global styles using CSS, more on that later.</p>
-      </div>
+        <p>There is also a way to define global styles using CSS, more on that later.
+      </section>
 
-      <div>
-        <p>I'm baby woke gastropub fingerstache, chia jawn sriracha adaptogen hella pickled DSA jianbing celiac unicorn.  Cronut raclette DSA taxidermy messenger bag schlitz thundercats bespoke pabst tonx gluten-free.  Praxis before they sold out prism 3 wolf moon, occupy pour-over vibecession cred migas fixie next level pop-up.  Crucifix tbh microdosing neutra XOXO polaroid bitters selvage vinyl vice actually.</p><p>Gochujang plaid gentrify, vape Brooklyn marxism cray leggings.  Yr mixtape beard meh church-key 3 wolf moon pug squid tilde praxis everyday carry adaptogen.  Activated charcoal lomo tote bag prism af, four loko fit ethical chartreuse freegan bushwick fam food truck.  Umami vinyl shaman, viral cupping single-origin coffee mumblecore direct trade microdosing beard scenester salvia occupy small batch.  Hella man braid street art, seitan etsy crucifix plaid poutine single-origin coffee marfa hot chicken synth distillery.  La croix bodega boys kombucha banh mi sus, squid offal man braid kale chips kickstarter.  Poke selfies cronut flexitarian fixie crucifix, vaporware tofu paleo prism.</p><p>Mlkshk cold-pressed four dollar toast, edison bulb semiotics portland banjo jianbing vegan pickled pop-up gatekeep next level etsy.  Farm-to-table gorpcore flexitarian offal, actually vaporware unicorn.  Before they sold out cray green juice 3 wolf moon tilde butcher beard keytar twee single-origin coffee fixie wolf snackwave vexillologist blog.  IPhone hella DIY VHS chambray, live-edge lomo af.  Pok pok kickstarter williamsburg tofu vegan, vibecession letterpress try-hard.  Food truck lyft cloud bread ascot.</p><p>Franzen humblebrag scenester yuccie literally selvage listicle thundercats marfa vinyl cardigan jean shorts bicycle rights quinoa vexillologist.  Fanny pack blue bottle tote bag slow-carb ennui actually food truck activated charcoal 8-bit bushwick edison bulb seitan.  Semiotics pitchfork before they sold out, ramps echo park freegan hexagon pop-up keffiyeh cronut gastropub stumptown plaid tacos.  Four dollar toast forage master cleanse tumblr marxism.  Bushwick vice small batch chia intelligentsia try-hard coloring book brunch activated charcoal.  Tumeric iPhone big mood ethical grailed enamel pin pok pok snackwave, brunch sartorial scenester.</p><p>Poke mixtape palo santo taxidermy 3 wolf moon actually.  Dreamcatcher kale chips raw denim, knausgaard ugh meh street art YOLO schlitz organic cray yes plz cornhole pabst grailed.  Tumeric fam four dollar toast, man bun vice hella jianbing master cleanse mixtape synth.  Cupping next level drinking vinegar freegan Brooklyn migas blackbird spyplane meggings marxism.  Pickled offal cronut chartreuse cliche irony viral cardigan chicharrones artisan tbh iPhone yr Brooklyn green juice.</p><p>Actually slow-carb hexagon kitsch marxism vape selvage ascot iceland pabst.  Keytar mustache banjo, keffiyeh tilde solarpunk 8-bit normcore taxidermy literally occupy seitan.  Meditation grailed tofu, blog knausgaard cornhole plaid.  Cred butcher typewriter bushwick.  Shaman sus selfies, XOXO tote bag pinterest photo booth biodiesel hashtag freegan disrupt quinoa before they sold out bitters cred.  Mustache portland wolf gorpcore intelligentsia hoodie ennui, dreamcatcher schlitz copper mug marfa VHS meditation viral DSA.  Woke kale chips tumblr cronut fanny pack occupy, normcore pickled asymmetrical gluten-free vibecession.</p><p>Mlkshk same flannel vice tote bag pug pabst fam banjo tofu 90's live-edge.  Truffaut yuccie quinoa, drinking vinegar marfa taxidermy offal selfies cloud bread vegan kitsch sartorial neutra slow-carb before they sold out.  Etsy chillwave tote bag tumeric echo park.  Literally bodega boys blackbird spyplane adaptogen polaroid hashtag seitan lyft health goth drinking vinegar.</p>
-      </div>
+      <section class="section">
+        <h2 class="section__heading" id="installation">Installation</h2>
+
+        <p>I'm baby woke gastropub fingerstache, chia jawn sriracha adaptogen hella pickled DSA jianbing celiac unicorn.  Cronut raclette DSA taxidermy messenger bag schlitz thundercats bespoke pabst tonx gluten-free.  Praxis before they sold out prism 3 wolf moon, occupy pour-over vibecession cred migas fixie next level pop-up.  Crucifix tbh microdosing neutra XOXO polaroid bitters selvage vinyl vice actually.</p>
+
+        <p>Gochujang plaid gentrify, vape Brooklyn marxism cray leggings.  Yr mixtape beard meh church-key 3 wolf moon pug squid tilde praxis everyday carry adaptogen.  Activated charcoal lomo tote bag prism af, four loko fit ethical chartreuse freegan bushwick fam food truck.  Umami vinyl shaman, viral cupping single-origin coffee mumblecore direct trade microdosing beard scenester salvia occupy small batch.  Hella man braid street art, seitan etsy crucifix plaid poutine single-origin coffee marfa hot chicken synth distillery.  La croix bodega boys kombucha banh mi sus, squid offal man braid kale chips kickstarter.  Poke selfies cronut flexitarian fixie crucifix, vaporware tofu paleo prism.</p>
+
+        <p>Mlkshk cold-pressed four dollar toast, edison bulb semiotics portland banjo jianbing vegan pickled pop-up gatekeep next level etsy.  Farm-to-table gorpcore flexitarian offal, actually vaporware unicorn.  Before they sold out cray green juice 3 wolf moon tilde butcher beard keytar twee single-origin coffee fixie wolf snackwave vexillologist blog.  IPhone hella DIY VHS chambray, live-edge lomo af.  Pok pok kickstarter williamsburg tofu vegan, vibecession letterpress try-hard.  Food truck lyft cloud bread ascot.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="getting-started">Getting started</h2>
+
+        <p>Flexitarian same fixie biodiesel tonx trust fund. La croix fanny pack stumptown marxism. Glossier next level paleo chambray before they sold out. Vaporware cray pok pok fingerstache, cupping salvia +1 venmo farm-to-table paleo tumblr post-ironic master cleanse. Dreamcatcher stumptown before they sold out, lo-fi grailed hammock fanny pack copper mug gatekeep knausgaard 90's photo booth synth man braid. Chambray squid try-hard, aesthetic meggings intelligentsia salvia solarpunk. Hammock crucifix chia etsy.</p>
+
+        <p>Cloud bread man braid sriracha distillery hoodie yuccie selvage thundercats hashtag. Paleo affogato pug messenger bag. Try-hard man braid crucifix, semiotics tote bag vibecession artisan cray bushwick street art. Fingerstache four loko shoreditch ennui, man braid praxis offal swag prism enamel pin flexitarian live-edge unicorn. Art party flannel chambray meggings authentic. Hammock live-edge DIY beard. Venmo gentrify same kogi food truck, vinyl hammock +1 quinoa meditation whatever iPhone.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="prop-based-styles">Prop based styles</h2>
+
+        <p>Williamsburg deep v pop-up, neutra hot chicken kinfolk drinking vinegar knausgaard. Yr letterpress fixie tumblr, cred activated charcoal shoreditch palo santo 90's retro air plant occupy try-hard quinoa mumblecore. Butcher cronut edison bulb green juice irony flexitarian wayfarers kinfolk man braid tousled same gochujang kombucha. Coloring book raw denim fingerstache kitsch cliche single-origin coffee readymade letterpress yes plz tonx dreamcatcher photo booth skateboard food truck. Sustainable franzen authentic, chambray helvetica pickled glossier hot chicken. Blue bottle synth pitchfork jawn swag kinfolk. Chambray same you probably haven't heard of them bodega boys actually, migas small batch solarpunk.
+
+        </p>
+
+        <p>Street art authentic austin ennui, fit shaman slow-carb fixie umami pabst gluten-free kale chips man bun. VHS four loko authentic normcore poke. Etsy heirloom next level cliche, echo park single-origin coffee vaporware artisan leggings brunch polaroid pork belly kinfolk. Gastropub salvia wayfarers tofu. Four dollar toast kickstarter plaid, selvage artisan pabst tonx marfa edison bulb biodiesel knausgaard grailed yuccie single-origin coffee subway tile.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="nested-selectors">Nested selectors</h2>
+
+        <p>Hot chicken trust fund vaporware kickstarter. Jianbing salvia whatever DIY austin adaptogen YOLO listicle roof party lyft XOXO. Prism jianbing +1 tousled activated charcoal 8-bit vape vegan put a bird on it hexagon sus microdosing sustainable. Marxism microdosing poutine woke, you probably haven't heard of them wolf vegan four dollar toast squid pabst tonx. Vice humblebrag poke hot chicken vape.
+
+        </p>
+
+        <p>Dreamcatcher tote bag green juice bicycle rights, cred deep v pour-over. JOMO cliche gluten-free narwhal, dreamcatcher mumblecore fam vinyl everyday carry affogato knausgaard gentrify. Pinterest iceland vexillologist yes plz bodega boys celiac narwhal church-key blog franzen retro gastropub synth chillwave. Bitters meh woke fashion axe, hexagon chicharrones gorpcore tilde pinterest DIY fam next level roof party.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="pseudo-styles">Pseudo styles</h2>
+
+        <p>Biodiesel disrupt gastropub celiac freegan viral, mustache small batch hell of. Tumblr humblebrag dreamcatcher farm-to-table flannel. Viral before they sold out synth plaid biodiesel knausgaard wayfarers, selvage 3 wolf moon cred. Scenester normcore hammock health goth. Meh tacos helvetica PBR&B, vice same green juice humblebrag intelligentsia af flannel vape. Yr blackbird spyplane XOXO photo booth squid. Health goth bicycle rights jean shorts PBR&B, bushwick wolf vinyl Brooklyn crucifix wayfarers activated charcoal.</p>
+
+        <p>Lumbersexual sustainable shabby chic coloring book. Craft beer vinyl food truck Brooklyn roof party affogato. 3 wolf moon aesthetic lumbersexual four loko JOMO. Everyday carry copper mug banh mi disrupt sus shoreditch. Woke irony shabby chic, 3 wolf moon knausgaard palo santo tbh church-key lo-fi wayfarers.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="media-queries">Media Queries</h2>
+
+        <p>Artisan keytar af selvage, meh freegan flannel aesthetic gentrify. Tacos godard snackwave gorpcore, locavore austin neutral milk hotel subway tile twee butcher bruh bushwick edison bulb kitsch. Plaid 90's jean shorts keffiyeh, neutra lo-fi sartorial grailed quinoa banjo selfies +1 subway tile ramps. Knausgaard tilde salvia unicorn flannel cardigan hot chicken. Tacos gentrify man braid hell of ugh cardigan snackwave green juice twee try-hard occupy.</p>
+
+        <p>La croix tbh 90's flannel vinyl fashion axe single-origin coffee copper mug franzen ethical pop-up cray. Selfies mustache kinfolk selvage narwhal, snackwave forage mumblecore umami taxidermy cliche lomo food truck you probably haven't heard of them tote bag. Roof party glossier PBR&B, green juice snackwave butcher artisan kitsch. Disrupt raclette pitchfork umami four dollar toast bodega boys af. Health goth chambray man bun photo booth unicorn quinoa, sartorial heirloom salvia mlkshk wayfarers tilde. Lumbersexual jean shorts jawn pinterest. Solarpunk godard cronut celiac before they sold out, disrupt umami af farm-to-table next level.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="extending-styles">Extending styles</h2>
+
+        <p>Freegan tote bag put a bird on it blue bottle 3 wolf moon, roof party health goth asymmetrical squid. Migas food truck enamel pin, austin taxidermy truffaut kinfolk unicorn. Typewriter franzen dreamcatcher flexitarian narwhal post-ironic cardigan banh mi affogato mukbang. Art party small batch cray drinking vinegar normcore. Palo santo vinyl cold-pressed fit hoodie yuccie next level godard tonx pabst biodiesel seitan kinfolk freegan hella. Adaptogen cliche aesthetic meggings whatever, twee cred roof party biodiesel shoreditch chia wayfarers jean shorts. Pop-up venmo umami yuccie mumblecore messenger bag JOMO vinyl sriracha live-edge typewriter cardigan big mood.</p>
+
+        <p>Readymade semiotics williamsburg hexagon waistcoat, portland helvetica. Squid banh mi pickled echo park, XOXO photo booth whatever skateboard tbh venmo mukbang. Vibecession offal williamsburg, banjo taiyaki gastropub organic forage messenger bag art party locavore neutral milk hotel. Hoodie sriracha truffaut banjo, XOXO health goth cardigan. Gluten-free whatever distillery vexillologist tattooed.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="style-another-component">Style another component</h2>
+
+        <p>Lo-fi messenger bag schlitz locavore affogato unicorn sustainable knausgaard small batch kombucha YOLO. IPhone distillery single-origin coffee tilde chillwave four loko man braid meditation next level cray sartorial. Fingerstache humblebrag williamsburg bushwick everyday carry schlitz DIY quinoa normcore iceland activated charcoal. Gatekeep cliche live-edge tote bag try-hard beard affogato vexillologist asymmetrical intelligentsia kombucha JOMO. Lyft vaporware glossier, cray raclette lomo VHS master cleanse humblebrag next level hot chicken. Live-edge DSA poke trust fund meggings authentic everyday carry, cardigan stumptown knausgaard. Pok pok same austin selvage activated charcoal.</p>
+
+        <p>Migas yuccie yr paleo mixtape grailed shaman, ramps mumblecore skateboard cred. Chartreuse keytar pabst VHS cray sustainable. Aesthetic shabby chic small batch mixtape pug. Blackbird spyplane quinoa literally before they sold out hashtag pug. Selfies pug direct trade grailed fit, art party coloring book tilde master cleanse kogi vegan bushwick sriracha.</p>
+      </section>
     </main>
   </div>
 </body>

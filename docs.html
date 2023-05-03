@@ -93,6 +93,7 @@
       font-family: Verdana, sans-serif;
       color: var(--color-primary);
       background-color: var(--background-primary);
+      touch-action: none;
     }
 
     a {
@@ -110,6 +111,11 @@
       margin: 0 auto;
       padding-right: 16px;
       padding-left: 16px;
+    }
+
+    .container--fluid {
+      padding-right: 0;
+      padding-left: 0;
     }
 
     .button {
@@ -211,9 +217,9 @@
     .main {
       flex: 1;
       max-width: 100%;
-      /* margin-left: 320px; */
       padding-top: 24px;
-      /* padding-left: 16px; */
+      padding-right: 16px;
+      padding-left: 16px;
     }
 
     .main:before {
@@ -232,10 +238,6 @@
     .section {
       padding: 0 0 48px;
     }
-
-    /* .section__heading:target {
-      padding-top: 24px;
-    } */
 
     .section__heading,
     .section p {
@@ -279,7 +281,6 @@
 
       .main {
         margin-left: 320px;
-        padding-left: 16px;
       }
     }
   </style>
@@ -306,7 +307,7 @@
       <button id="menu" class="button menu">menu</button>
     </div>
   </header>
-  <div class="container">
+  <div class="container container--fluid">
     <nav class="nav">
       <ul>
         <li>

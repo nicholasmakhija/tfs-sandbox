@@ -37,32 +37,34 @@
       /* --color-secondary: #000; */
       /* OR */
       --color-secondary: #333;
-      --color-tertiary: #303846;
+
       --background-primary: #fff;
       --background-secondary: #f8f9fa;
       --background-secondary-translucent: rgba(248,249,250, 0.80);
-      --background-tertiary: #212121;
+
+      --background-header: #212121;
+      --background-nav: #f8f9fa;
+      --background-code: #f6f7f8;
+
       --border-primary: #dadde1;
       --border-secondary: #ccd0d5;
-      --code-background: #f6f7f8;
     }
 
     .dark-mode,
     :root.dark-mode {
       --color-primary: #e3e3e3;
       --color-secondary: #fff;
-      --color-tertiary: #fff;
+
       --background-primary: #182230;
-      /* --background-secondary: #1f2d40; */
-      /* OR */
-      --background-secondary: #161515;
+      --background-secondary: #1f2d40;
       --background-secondary-translucent: rgba(31, 45, 64, 0.80);
-      /* --background-tertiary: #161515; */
-      /* OR */
-      --background-tertiary: #1f2d40;
+
+      --background-header: #1f2d40;
+      --background-code: rgba(255, 255, 255, 0.10);
+      --background-nav: #121a24;
+
       --border-primary: #444950;
       --border-secondary: #8d949e;
-      --code-background: rgba(255, 255, 255, 0.10);
     }
 
     html {
@@ -106,7 +108,7 @@
       overflow: hidden;
       font-size: 14px;
       line-height: 16px;
-      background-color: var(--code-background);
+      background-color: var(--background-code);
       border: 2px solid rgba(0, 0, 0, 0.1);
       border-radius: 4px;
       white-space: nowrap;
@@ -152,7 +154,7 @@
       background-color: var(--background-secondary-translucent); */
 
       /* OR */
-      background-color: var(--background-tertiary);
+      background-color: var(--background-header);
       color: #fff;
 
       position: fixed;
@@ -301,7 +303,7 @@
       padding: 24px 16px 72px !important;
       overflow: hidden;
       overflow-y: auto;
-      background-color: var(--background-secondary);
+      background-color: var(--background-nav);
     }
 
     .nav ul {

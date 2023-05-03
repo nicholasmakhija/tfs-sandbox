@@ -94,6 +94,8 @@
     }
 
     h1 {
+      font-size: 2rem;
+      line-height: 2.25rem;
       margin: 0 0 24px;
     }
 
@@ -309,7 +311,13 @@
       margin: 0 0 24px;
     }
 
-    .nav > ul {
+    .nav__list {
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+    }
+
+    .nav__list.isRoot {
       position: relative;
       height: 100%;
       /* padding: 24px 16px 72px 0 !important; */
@@ -319,17 +327,65 @@
       background-color: var(--background-nav);
     }
 
-    .nav ul {
-      list-style: none;
-      margin: 0 0 24px;
+    .nav__item {
+      margin: 0;
       padding: 0;
     }
 
-    .nav ul li.active {
+    .nav__button {
+      position: relative;
+      margin: 0 0 24px;
+      padding: 0;
+      appearance: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+
+      color: var(--color-primary);
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-family: Verdana, sans-serif;
+      font-weight: bold;
+      transition: 300ms cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .nav__button::after {
+      content: "";
+      position: absolute;
+      right: -16px;
+      height: 32px;
+      width: 0;
+      background-color: rgba(255, 105, 149, 0.7);
+      transition: width 300ms cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .nav__button:hover,
+    .nav__button[aria-expanded="true"] {
       color: #ff6995;
     }
 
-    .nav ul li a {
+    .nav__button:focus {
+      outline: 0;
+    }
+
+    .nav__button[aria-expanded="true"]:not(:hover):focus::after,
+    .nav__button:not(:hover):focus::after {
+      width: 12px;
+    }
+
+    .nav__button[aria-expanded="true"]::after {
+      width: 8px;
+    }
+
+    .nav__button[aria-expanded="true"] + .nav__panel {
+      display: block;
+    }
+
+    .nav__panel {
+      display: none;
+    }
+
+    .nav__link {
       position: relative;
       display: inline-block;
       padding: 4px;
@@ -339,27 +395,15 @@
       transition: 300ms cubic-bezier(0.2, 0, 0, 1);
     }
 
-    .nav ul li a:hover,
-    .nav ul li a:focus {
-      outline: 0;
-      background-color: rgba(255, 105, 149, 0.7);
-    }
-
-    .nav ul li a.active {
+    .nav__link:hover {
       color: #ff6995;
     }
 
-    .nav ul li a.active:hover,
-    .nav ul li a.active:focus {
-      color: #fff;
+    .nav__link:focus {
+      outline: 0;
     }
 
-    .nav ul li a.active:after {
-      content: "";
-      position: absolute;
-      right: -16px;
-      height: 24px;
-      width: 8px;
+    .nav__link:not(:hover):focus {
       background-color: rgba(255, 105, 149, 0.7);
     }
 
@@ -417,7 +461,7 @@
         left: auto;
       }
 
-      .nav > ul {
+      .nav__list.isRoot {
         background-color: transparent;
         border-right: 1px solid var(--border-secondary);
       }
@@ -429,8 +473,17 @@
   </style>
   <script>
     (function () {
-      document.addEventListener('DOMContentLoaded', () => {
-        const body = document.body;
+      const body = document.body;
+
+      const toggleNav = () => {
+        body.classList.toggle('nav--open');
+      };
+
+      const closeNav = () => {
+        body.classList.remove('nav--open');
+      }
+
+      const header = () => {
         const menu = document.getElementById('menu');
         const mode = document.getElementById('mode');
 
@@ -438,9 +491,51 @@
           body.classList.toggle('dark-mode');
         });
 
-        menu.addEventListener('click', () => {
-          body.classList.toggle('nav--open');
-        });
+        menu.addEventListener('click', toggleNav);
+      };
+
+      const nav = () => {
+        const buttons = document.querySelectorAll('.nav__button');
+        const expanded = 'aria-expanded'
+
+        buttons.forEach((button) => {
+          const links = button.parentNode.querySelectorAll('.nav__link');
+
+          links.forEach((link) => {
+            link.addEventListener('click', (e) => {
+              const activeSection = document.querySelector(link.hash);
+
+              // setTimeout(() => {
+              //   closeNav();
+              // });
+
+              // if (!activeSection || window.location.hash === link.hash) {
+              //   e.preventDefault();
+
+              //   return;
+              // }
+
+              const scrollTop = window.pageYOffset;
+              const sectionOffsetTop = activeSection.getBoundingClientRect().top + scrollTop;
+
+              setTimeout(() => {
+                window.scrollTo(0, sectionOffsetTop - 86);
+                closeNav();
+              });
+            });
+          });
+
+          button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute(expanded) === 'true';
+
+            button.setAttribute(expanded, `${!isExpanded}`);
+          })
+        })
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        header();
+        nav();
       });
     })();
   </script>
@@ -470,41 +565,118 @@
   </header>
   <div class="container container--fluid">
     <nav class="nav">
-      <ul>
-        <li>
-          <h2>Basics</h2>
-          <ul>
-            <li>
-              <a href="#introduction-and-motivation">Introduction and motivation</a>
-            </li>
-            <li>
-              <a href="#installation">Installation</a>
-            </li>
-            <li>
-              <a href="#getting-started" class="active">Getting started</a>
-            </li>
-            <li>
-              <a href="#prop-based-styles">Prop based styles</a>
-            </li>
-            <li>
-              <a href="#nested-selectors">Nested selectors</a>
-            </li>
-            <li>
-              <a href="#pseudo-styles">Pseudo styles</a>
-            </li>
-            <li>
-              <a href="#media-queries">Media Queries</a>
-            </li>
-            <li>
-              <a href="#extending-styles">Extending styles</a>
-            </li>
-            <li>
-              <a href="#style-another-component">Style another component</a>
-            </li>
-          </ul>
+      <ul class="nav__list isRoot">
+        <li class="nav__item">
+          <button
+            class="nav__button"
+            aria-expanded="true"
+            aria-controls="nav-panel-1"
+            id="nav-button-1"
+          >
+            Basics
+          </button>
+          <div
+            class="nav__panel"
+            role="region"
+            aria-labelledby="nav-button-1"
+            id="nav-panel-1"
+          >
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a class="nav__link" href="#introduction-and-motivation">Introduction and motivation</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#installation">Installation</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#getting-started">Getting started</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#prop-based-styles">Prop based styles</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#nested-selectors">Nested selectors</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#pseudo-styles">Pseudo styles</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#media-queries">Media Queries</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#extending-styles">Extending styles</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#style-another-component">Style another component</a>
+              </li>
+            </ul>
+          </div>
         </li>
-      <li><h2>Advanced</h2></li>
-      <li><h2>API</h2></li>
+        <li class="nav__item">
+          <button
+            class="nav__button"
+            aria-expanded="false"
+            aria-controls="nav-panel-2"
+            id="nav-button-2"
+          >
+            Advanced
+          </button>
+          <div
+            class="nav__panel"
+            role="region"
+            aria-labelledby="nav-button-2"
+            id="nav-panel-2"
+          >
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a class="nav__link" href="#forwarding-ref">Forwarding Ref</a>
+              </li>
+
+              <li class="nav__item">
+                <a class="nav__link" href="#prop-types">PropTypes</a>
+              </li>
+
+              <li class="nav__item">
+                <a class="nav__link" href="#server-side-rendering">Server Side Rendering</a>
+              </li>
+
+              <li class="nav__item">
+                <a class="nav__link" href="#debug-mode">Debug mode</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav__item">
+          <button
+            class="nav__button"
+            aria-expanded="false"
+            aria-controls="nav-panel-3"
+            id="nav-button-3"
+          >
+            API
+          </button>
+          <div
+            class="nav__panel"
+            role="region"
+            aria-labelledby="nav-button-3"
+            id="nav-panel-3"
+          >
+            <ul class="nav__list">
+              <li class="nav_item">
+                <a href="#styled-component" class="nav__link">Styled Component</a>
+              </li>
+              <li class="nav_item">
+                <a href="#helpers" class="nav__link">Helpers</a>
+              </li>
+              <li class="nav_item">
+                <a href="#supported-css" class="nav__link">Supported CSS</a>
+              </li>
+              <li class="nav_item">
+                <a href="#global-styles" class="nav__link">Global Styles</a>
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </nav>
 

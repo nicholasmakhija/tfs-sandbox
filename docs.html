@@ -317,19 +317,23 @@
       padding: 0;
     }
 
-    .nav__list.isRoot {
+    .nav__content {
       position: relative;
       height: 100%;
       /* padding: 24px 16px 72px 0 !important; */
-      padding: 24px 16px 72px !important;
+      padding: 24px 16px 72px;
       overflow: hidden;
       overflow-y: auto;
       background-color: var(--background-nav);
     }
 
     .nav__item {
-      margin: 0;
+      margin: 0 0 4px;
       padding: 0;
+    }
+
+    .nav__item:last-child {
+      margin-bottom: 0;
     }
 
     .nav__button {
@@ -462,8 +466,22 @@
       }
 
       .nav__list.isRoot {
+        position: relative;
+        /* border-right: 1px solid var(--border-secondary); */
+      }
+
+      .nav__list.isRoot::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -16px;
+        height: 100%;
+        width: 1px;
+        background-color: #ccd0d5;
+      }
+
+      .nav__content {
         background-color: transparent;
-        border-right: 1px solid var(--border-secondary);
       }
 
       .main {
@@ -520,6 +538,7 @@
 
               setTimeout(() => {
                 window.scrollTo(0, sectionOffsetTop - 86);
+                // link.focus();
                 closeNav();
               });
             });
@@ -565,119 +584,121 @@
   </header>
   <div class="container container--fluid">
     <nav class="nav">
-      <ul class="nav__list isRoot">
-        <li class="nav__item">
-          <button
-            class="nav__button"
-            aria-expanded="true"
-            aria-controls="nav-panel-1"
-            id="nav-button-1"
-          >
-            Basics
-          </button>
-          <div
-            class="nav__panel"
-            role="region"
-            aria-labelledby="nav-button-1"
-            id="nav-panel-1"
-          >
-            <ul class="nav__list">
-              <li class="nav__item">
-                <a class="nav__link" href="#introduction-and-motivation">Introduction and motivation</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#installation">Installation</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#getting-started">Getting started</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#prop-based-styles">Prop based styles</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#nested-selectors">Nested selectors</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#pseudo-styles">Pseudo styles</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#media-queries">Media Queries</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#extending-styles">Extending styles</a>
-              </li>
-              <li class="nav__item">
-                <a class="nav__link" href="#style-another-component">Style another component</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav__item">
-          <button
-            class="nav__button"
-            aria-expanded="false"
-            aria-controls="nav-panel-2"
-            id="nav-button-2"
-          >
-            Advanced
-          </button>
-          <div
-            class="nav__panel"
-            role="region"
-            aria-labelledby="nav-button-2"
-            id="nav-panel-2"
-          >
-            <ul class="nav__list">
-              <li class="nav__item">
-                <a class="nav__link" href="#forwarding-ref">Forwarding Ref</a>
-              </li>
+      <div class="nav__content">
+        <ul class="nav__list isRoot">
+          <li class="nav__item">
+            <button
+              class="nav__button"
+              aria-expanded="true"
+              aria-controls="nav-panel-1"
+              id="nav-button-1"
+            >
+              Basics
+            </button>
+            <div
+              class="nav__panel"
+              role="region"
+              aria-labelledby="nav-button-1"
+              id="nav-panel-1"
+            >
+              <ul class="nav__list">
+                <li class="nav__item">
+                  <a class="nav__link" href="#introduction-and-motivation">Introduction and motivation</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#installation">Installation</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#getting-started">Getting started</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#prop-based-styles">Prop based styles</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#nested-selectors">Nested selectors</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#pseudo-styles">Pseudo styles</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#media-queries">Media Queries</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#extending-styles">Extending styles</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#style-another-component">Style another component</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <button
+              class="nav__button"
+              aria-expanded="false"
+              aria-controls="nav-panel-2"
+              id="nav-button-2"
+            >
+              Advanced
+            </button>
+            <div
+              class="nav__panel"
+              role="region"
+              aria-labelledby="nav-button-2"
+              id="nav-panel-2"
+            >
+              <ul class="nav__list">
+                <li class="nav__item">
+                  <a class="nav__link" href="#forwarding-ref">Forwarding Ref</a>
+                </li>
 
-              <li class="nav__item">
-                <a class="nav__link" href="#prop-types">PropTypes</a>
-              </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#prop-types">PropTypes</a>
+                </li>
 
-              <li class="nav__item">
-                <a class="nav__link" href="#server-side-rendering">Server Side Rendering</a>
-              </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#server-side-rendering">Server Side Rendering</a>
+                </li>
 
-              <li class="nav__item">
-                <a class="nav__link" href="#debug-mode">Debug mode</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav__item">
-          <button
-            class="nav__button"
-            aria-expanded="false"
-            aria-controls="nav-panel-3"
-            id="nav-button-3"
-          >
-            API
-          </button>
-          <div
-            class="nav__panel"
-            role="region"
-            aria-labelledby="nav-button-3"
-            id="nav-panel-3"
-          >
-            <ul class="nav__list">
-              <li class="nav_item">
-                <a href="#styled-component" class="nav__link">Styled Component</a>
-              </li>
-              <li class="nav_item">
-                <a href="#helpers" class="nav__link">Helpers</a>
-              </li>
-              <li class="nav_item">
-                <a href="#supported-css" class="nav__link">Supported CSS</a>
-              </li>
-              <li class="nav_item">
-                <a href="#global-styles" class="nav__link">Global Styles</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
+                <li class="nav__item">
+                  <a class="nav__link" href="#debug-mode">Debug mode</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <button
+              class="nav__button"
+              aria-expanded="false"
+              aria-controls="nav-panel-3"
+              id="nav-button-3"
+            >
+              API
+            </button>
+            <div
+              class="nav__panel"
+              role="region"
+              aria-labelledby="nav-button-3"
+              id="nav-panel-3"
+            >
+              <ul class="nav__list">
+                <li class="nav_item">
+                  <a href="#styled-component" class="nav__link">Styled Component</a>
+                </li>
+                <li class="nav_item">
+                  <a href="#helpers" class="nav__link">Helpers</a>
+                </li>
+                <li class="nav_item">
+                  <a href="#supported-css" class="nav__link">Supported CSS</a>
+                </li>
+                <li class="nav_item">
+                  <a href="#global-styles" class="nav__link">Global Styles</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <main class="main">

@@ -502,7 +502,10 @@
       }
 
       const scrollToSection = (id) => (e) => {
-        if (e) e.preventDefault();
+        if (e) {
+          e.preventDefault();
+          history.pushState({}, '', id);
+        }
 
         const target = document.querySelector(id);
 
@@ -511,7 +514,6 @@
         const scrollY = window.pageYOffset;
         const y = target.getBoundingClientRect().top + scrollY - 86;
 
-        history.pushState({}, '', id);
         window.scrollTo(0, y);
         // link.focus();
         closeNav();
@@ -547,7 +549,15 @@
         });
       };
 
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('DOMContentLoaded', (e) => {
+        const hash = window.location.hash;
+
+        if (hash) {
+          setTimeout(() => {
+            scrollToSection(hash)();
+          });
+        }
+
         header();
         nav();
       });
@@ -709,7 +719,7 @@
       <section class="section">
         <h2 class="section__heading" id="introduction">Introduction</h2>
 
-        <p>A high performance and easy to use CSS-in-JS library with support for server-side rendering. Built similar to other popular libraries, with a familiar API, providing a great overall developer experience.</p>
+        <p>A high performance CSS-in-JS library for React that supports server-side rendering. Built similar to other popular libraries, with a familiar API, providing a great overall developer experience and a small footprint <code>~4.9kb</code> gzipped</p>
         <p>Styles are defined using Object Literal syntax, meaning instead of writing properties in <code>kebab-case</code> like regular CSS, they are in <code>camelCase</code> eg: <code>max-width</code> would be <code>maxWidth</code>. Don't worry, Styled provides autocompletion and type checking for CSS properties and values thanks to <a data-is-external-link="true" href="https://github.com/frenic/csstype#readme" rel="nofollow">CSSType</a>.</p>
         <p>There is also a way to define global styles using CSS, more on that later.
       </section>

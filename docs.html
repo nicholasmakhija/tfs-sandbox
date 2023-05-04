@@ -598,7 +598,7 @@
             >
               <ul class="nav__list">
                 <li class="nav__item">
-                  <a class="nav__link" href="#introduction-and-motivation">Introduction and motivation</a>
+                  <a class="nav__link" href="#introduction">Introduction</a>
                 </li>
                 <li class="nav__item">
                   <a class="nav__link" href="#installation">Installation</a>
@@ -610,19 +610,22 @@
                   <a class="nav__link" href="#prop-based-styles">Prop based styles</a>
                 </li>
                 <li class="nav__item">
-                  <a class="nav__link" href="#nested-selectors">Nested selectors</a>
-                </li>
-                <li class="nav__item">
                   <a class="nav__link" href="#pseudo-styles">Pseudo styles</a>
                 </li>
                 <li class="nav__item">
-                  <a class="nav__link" href="#media-queries">Media Queries</a>
+                  <a class="nav__link" href="#descendent-combinator-styles">Descendent & Combinator styles</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#attribute-styles">Attribute styles</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#at-rules">At-rules</a>
                 </li>
                 <li class="nav__item">
                   <a class="nav__link" href="#extending-styles">Extending styles</a>
                 </li>
                 <li class="nav__item">
-                  <a class="nav__link" href="#style-another-component">Style another component</a>
+                  <a class="nav__link" href="#hoc-styling">HOC styling</a>
                 </li>
               </ul>
             </div>
@@ -657,6 +660,10 @@
 
                 <li class="nav__item">
                   <a class="nav__link" href="#debug-mode">Debug mode</a>
+                </li>
+
+                <li class="nav__item">
+                  <a class="nav__link" href="#typescript">Typescript</a>
                 </li>
               </ul>
             </div>
@@ -700,9 +707,9 @@
       <h1>Basics</h1>
 
       <section class="section">
-        <h2 class="section__heading" id="introduction-and-motivation">Introduction and motivation</h2>
+        <h2 class="section__heading" id="introduction">Introduction</h2>
 
-        <p>A high performance and easy to use CSS-in-JS library with support for server-side rendering. Built similar to other popular libraries, with a simpler API and providing a great overall developer experience.</p>
+        <p>A high performance and easy to use CSS-in-JS library with support for server-side rendering. Built similar to other popular libraries, with a familiar API, providing a great overall developer experience.</p>
         <p>Styles are defined using Object Literal syntax, meaning instead of writing properties in <code>kebab-case</code> like regular CSS, they are in <code>camelCase</code> eg: <code>max-width</code> would be <code>maxWidth</code>. Don't worry, Styled provides autocompletion and type checking for CSS properties and values thanks to <a data-is-external-link="true" href="https://github.com/frenic/csstype#readme" rel="nofollow">CSSType</a>.</p>
         <p>There is also a way to define global styles using CSS, more on that later.
       </section>
@@ -736,7 +743,15 @@
       </section>
 
       <section class="section">
-        <h2 class="section__heading" id="nested-selectors">Nested selectors</h2>
+        <h2 class="section__heading" id="pseudo-styles">Pseudo styles</h2>
+
+        <p>Biodiesel disrupt gastropub celiac freegan viral, mustache small batch hell of. Tumblr humblebrag dreamcatcher farm-to-table flannel. Viral before they sold out synth plaid biodiesel knausgaard wayfarers, selvage 3 wolf moon cred. Scenester normcore hammock health goth. Meh tacos helvetica PBR&B, vice same green juice humblebrag intelligentsia af flannel vape. Yr blackbird spyplane XOXO photo booth squid. Health goth bicycle rights jean shorts PBR&B, bushwick wolf vinyl Brooklyn crucifix wayfarers activated charcoal.</p>
+
+        <p>Lumbersexual sustainable shabby chic coloring book. Craft beer vinyl food truck Brooklyn roof party affogato. 3 wolf moon aesthetic lumbersexual four loko JOMO. Everyday carry copper mug banh mi disrupt sus shoreditch. Woke irony shabby chic, 3 wolf moon knausgaard palo santo tbh church-key lo-fi wayfarers.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="descendent-combinator-styles">Descendent & Combinator styles</h2>
 
         <p>Hot chicken trust fund vaporware kickstarter. Jianbing salvia whatever DIY austin adaptogen YOLO listicle roof party lyft XOXO. Prism jianbing +1 tousled activated charcoal 8-bit vape vegan put a bird on it hexagon sus microdosing sustainable. Marxism microdosing poutine woke, you probably haven't heard of them wolf vegan four dollar toast squid pabst tonx. Vice humblebrag poke hot chicken vape.
 
@@ -746,15 +761,15 @@
       </section>
 
       <section class="section">
-        <h2 class="section__heading" id="pseudo-styles">Pseudo styles</h2>
+        <h2 class="section__heading" id="attribute-styles">Attribute styles</h2>
 
-        <p>Biodiesel disrupt gastropub celiac freegan viral, mustache small batch hell of. Tumblr humblebrag dreamcatcher farm-to-table flannel. Viral before they sold out synth plaid biodiesel knausgaard wayfarers, selvage 3 wolf moon cred. Scenester normcore hammock health goth. Meh tacos helvetica PBR&B, vice same green juice humblebrag intelligentsia af flannel vape. Yr blackbird spyplane XOXO photo booth squid. Health goth bicycle rights jean shorts PBR&B, bushwick wolf vinyl Brooklyn crucifix wayfarers activated charcoal.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam commodo condimentum semper. In elementum, sem luctus dapibus vulputate, arcu quam ultrices tortor, vel gravida eros nisl eget sem. Pellentesque vel vulputate eros. Nunc ultrices ante ac dolor viverra, in pharetra metus interdum. Maecenas vitae lacus lacus. Aenean nisl nisl, tincidunt quis tempor id, iaculis dictum urna. Duis ut elementum turpis, sed vulputate ligula. Aenean in nunc laoreet, egestas dolor et, efficitur quam. Ut sit amet aliquet turpis.</p>
 
-        <p>Lumbersexual sustainable shabby chic coloring book. Craft beer vinyl food truck Brooklyn roof party affogato. 3 wolf moon aesthetic lumbersexual four loko JOMO. Everyday carry copper mug banh mi disrupt sus shoreditch. Woke irony shabby chic, 3 wolf moon knausgaard palo santo tbh church-key lo-fi wayfarers.</p>
+        <p>Nam tellus ipsum, imperdiet et pretium nec, tempor sed mauris. Mauris posuere, tellus eget iaculis ultrices, dui erat faucibus orci, non molestie elit ante ac diam. Proin a ipsum ultricies, aliquet lorem eleifend, ullamcorper nisl. Proin condimentum, ipsum ut venenatis vestibulum, ante magna ultricies neque, faucibus aliquet lectus nunc quis massa. Suspendisse convallis, elit id dictum consectetur, arcu felis maximus orci, id placerat urna metus eget leo. Sed bibendum turpis lorem, et commodo neque bibendum tempus. Suspendisse aliquam dictum gravida. Etiam congue egestas tortor, id rutrum metus feugiat quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras non enim nec urna vehicula fermentum quis in nisl. Aliquam sed consequat tellus. Aenean ullamcorper tincidunt mi et commodo. Proin imperdiet massa sed nibh pellentesque, non aliquet metus ullamcorper. Nullam laoreet nec ex in tristique. Sed at ipsum aliquam mi tristique dictum.</p>
       </section>
 
       <section class="section">
-        <h2 class="section__heading" id="media-queries">Media Queries</h2>
+        <h2 class="section__heading" id="at-rules">At-rules</h2>
 
         <p>Artisan keytar af selvage, meh freegan flannel aesthetic gentrify. Tacos godard snackwave gorpcore, locavore austin neutral milk hotel subway tile twee butcher bruh bushwick edison bulb kitsch. Plaid 90's jean shorts keffiyeh, neutra lo-fi sartorial grailed quinoa banjo selfies +1 subway tile ramps. Knausgaard tilde salvia unicorn flannel cardigan hot chicken. Tacos gentrify man braid hell of ugh cardigan snackwave green juice twee try-hard occupy.</p>
 
@@ -770,7 +785,7 @@
       </section>
 
       <section class="section">
-        <h2 class="section__heading" id="style-another-component">Style another component</h2>
+        <h2 class="section__heading" id="hoc-styling">HOC styling</h2>
 
         <p>Lo-fi messenger bag schlitz locavore affogato unicorn sustainable knausgaard small batch kombucha YOLO. IPhone distillery single-origin coffee tilde chillwave four loko man braid meditation next level cray sartorial. Fingerstache humblebrag williamsburg bushwick everyday carry schlitz DIY quinoa normcore iceland activated charcoal. Gatekeep cliche live-edge tote bag try-hard beard affogato vexillologist asymmetrical intelligentsia kombucha JOMO. Lyft vaporware glossier, cray raclette lomo VHS master cleanse humblebrag next level hot chicken. Live-edge DSA poke trust fund meggings authentic everyday carry, cardigan stumptown knausgaard. Pok pok same austin selvage activated charcoal.</p>
 

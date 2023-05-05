@@ -499,7 +499,7 @@
 
       const closeNav = () => {
         body.classList.remove('nav--open');
-      }
+      };
 
       const scrollToSection = (id) => (e) => {
         if (e) {
@@ -522,9 +522,21 @@
       const header = () => {
         const menu = document.getElementById('menu');
         const mode = document.getElementById('mode');
+        const key = 'styled.docs-mode';
+        const isDarkMode = () => window.localStorage.getItem(key);
+
+        if (isDarkMode()) body.classList.add('dark-mode');
 
         mode.addEventListener('click', () => {
-          body.classList.toggle('dark-mode');
+          if (isDarkMode()) {
+            body.classList.remove('dark-mode');
+
+            window.localStorage.removeItem(key);
+          } else {
+            body.classList.add('dark-mode');
+
+            window.localStorage.setItem(key, 'true');
+          }
         });
 
         menu.addEventListener('click', toggleNav);
@@ -620,7 +632,7 @@
                   <a class="nav__link" href="#prop-based-styles">Prop based styles</a>
                 </li>
                 <li class="nav__item">
-                  <a class="nav__link" href="#pseudo-styles">Pseudo styles</a>
+                  <a class="nav__link" href="#pseudo">Pseudo</a>
                 </li>
                 <li class="nav__item">
                   <a class="nav__link" href="#descendent-combinator">Descendent & Combinator</a>
@@ -753,7 +765,7 @@
       </section>
 
       <section class="section">
-        <h2 class="section__heading" id="pseudo-styles">Pseudo styles</h2>
+        <h2 class="section__heading" id="pseudo">Pseudo</h2>
 
         <p>Biodiesel disrupt gastropub celiac freegan viral, mustache small batch hell of. Tumblr humblebrag dreamcatcher farm-to-table flannel. Viral before they sold out synth plaid biodiesel knausgaard wayfarers, selvage 3 wolf moon cred. Scenester normcore hammock health goth. Meh tacos helvetica PBR&B, vice same green juice humblebrag intelligentsia af flannel vape. Yr blackbird spyplane XOXO photo booth squid. Health goth bicycle rights jean shorts PBR&B, bushwick wolf vinyl Brooklyn crucifix wayfarers activated charcoal.</p>
 

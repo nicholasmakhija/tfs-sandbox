@@ -107,6 +107,46 @@
       white-space: nowrap;
     }
 
+    pre {
+      margin: 0;
+      padding: 0;
+      background-color: #292d3e;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    pre:last-child {
+      margin-bottom: 0;
+    }
+
+    pre > code {
+      display: block;
+      padding: 16px;
+      background-color: inherit;
+      font-family: monospace;
+      border: none;
+      white-space: pre;
+      color: #f5f5f4;
+      font-family: "Cascadia Mono", "Segoe UI Mono",  "Liberation Mono",  Menlo, Monaco, Consolas, monospace;
+      line-height: 20px;
+      overflow: visible;
+    }
+
+    .c { color: #697098; }
+    .s { color: #e7ee98; }
+    .k, .o { color: #eb82bf; }
+    .f { color: #61e884; }
+    .b { color: #96dfef; }
+    .p { color: #ffcb6b; } /* TODO: change */
+    .n { color: #bfc7d5; } /* TODO: change */
+    .v { color: #bf9eee; }
+
+    /* .k, */
+    .b { font-style: italic; }
+
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -741,9 +781,27 @@
       <section class="section">
         <h2 class="section__heading" id="getting-started">Getting started</h2>
 
-        <p>Flexitarian same fixie biodiesel tonx trust fund. La croix fanny pack stumptown marxism. Glossier next level paleo chambray before they sold out. Vaporware cray pok pok fingerstache, cupping salvia +1 venmo farm-to-table paleo tumblr post-ironic master cleanse. Dreamcatcher stumptown before they sold out, lo-fi grailed hammock fanny pack copper mug gatekeep knausgaard 90's photo booth synth man braid. Chambray squid try-hard, aesthetic meggings intelligentsia salvia solarpunk. Hammock crucifix chia etsy.</p>
+        <p>Let's start by building a simple button.</p>
 
-        <p>Cloud bread man braid sriracha distillery hoodie yuccie selvage thundercats hashtag. Paleo affogato pug messenger bag. Try-hard man braid crucifix, semiotics tote bag vibecession artisan cray bushwick street art. Fingerstache four loko shoreditch ennui, man braid praxis offal swag prism enamel pin flexitarian live-edge unicorn. Art party flannel chambray meggings authentic. Hammock live-edge DIY beard. Venmo gentrify same kogi food truck, vinyl hammock +1 quinoa meditation whatever iPhone.</p>
+        <pre><code><span class="k">const</span> <span class="v">Button</span> <span class="o">=</span> <span class="v">styled</span>.<span class="f">div</span>(<span class="o">{</span>
+  appearance<span class="o">:</span> <span class="s">'none'</span>,
+  backgroundColor<span class="o">:</span> <span class="s">'hotpink'</span>,
+  border<span class="o">:</span> <span class="s">'2px solid hotpink'</span>,
+  borderRadius<span class="o">:</span> <span class="s">'4px'</span>,
+  fontSize<span class="o">:</span> <span class="s">'0.875rem'</span>,
+  lineHeight<span class="o">:</span> <span class="s">'1.5rem'</span>,
+  margin<span class="o">:</span> <span class="v">0</span>,
+  padding<span class="o">:</span> <span class="s">'0 6px'</span>
+<span class="o">}</span>);
+
+<span class="c">// usage:</span>
+<span class="k">const</span> <span class="v">ButtonWrapper</span> <span class="o">=</span> () <span class="o">=></span> (
+  &lt;<span class="b">Button</span>&gt;
+    I'm a button
+  &lt;<span class="b">/Button</span>&gt;
+);
+</code></pre>
+
       </section>
 
       <section class="section">

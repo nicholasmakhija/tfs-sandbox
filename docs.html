@@ -659,9 +659,6 @@
                   <a class="nav__link" href="#getting-started">Getting started</a>
                 </li>
                 <li class="nav__item">
-                  <a class="nav__link" href="#prop-based-styles">Prop based styles</a>
-                </li>
-                <li class="nav__item">
                   <a class="nav__link" href="#pseudo">Pseudo</a>
                 </li>
                 <li class="nav__item">
@@ -672,6 +669,9 @@
                 </li>
                 <li class="nav__item">
                   <a class="nav__link" href="#at-rules">At-rules</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#prop-based-styles">Prop based styles</a>
                 </li>
                 <li class="nav__item">
                   <a class="nav__link" href="#extending-styles">Extending styles</a>
@@ -783,10 +783,12 @@
 
         <p>Let's start by building a simple button.</p>
 
-        <pre><code><span class="k">const</span> <span class="v">Button</span> <span class="o">=</span> <span class="v">styled</span>.<span class="f">div</span>(<span class="o">{</span>
+        <pre><code><span class="k">const</span> <span class="v">buttonAccent</span> <span class="o">=</span> <span class="s">'hotpink'</span>;
+
+<span class="k">const</span> <span class="v">Button</span> <span class="o">=</span> <span class="v">styled</span>.<span class="f">div</span>(<span class="o">{</span>
   appearance<span class="o">:</span> <span class="s">'none'</span>,
-  backgroundColor<span class="o">:</span> <span class="s">'hotpink'</span>,
-  border<span class="o">:</span> <span class="s">'2px solid hotpink'</span>,
+  backgroundColor<span class="o">:</span> <span class="v">buttonAccent</span>,
+  border<span class="o">:</span> <span class="s">`2px solid <span class="o">${</span><span class="v">buttonAccent</span><span class="o">}</span>`</span>,
   borderRadius<span class="o">:</span> <span class="s">'4px'</span>,
   fontSize<span class="o">:</span> <span class="s">'0.875rem'</span>,
   lineHeight<span class="o">:</span> <span class="s">'1.5rem'</span>,
@@ -802,16 +804,6 @@
 );
 </code></pre>
 
-      </section>
-
-      <section class="section">
-        <h2 class="section__heading" id="prop-based-styles">Prop based styles</h2>
-
-        <p>Williamsburg deep v pop-up, neutra hot chicken kinfolk drinking vinegar knausgaard. Yr letterpress fixie tumblr, cred activated charcoal shoreditch palo santo 90's retro air plant occupy try-hard quinoa mumblecore. Butcher cronut edison bulb green juice irony flexitarian wayfarers kinfolk man braid tousled same gochujang kombucha. Coloring book raw denim fingerstache kitsch cliche single-origin coffee readymade letterpress yes plz tonx dreamcatcher photo booth skateboard food truck. Sustainable franzen authentic, chambray helvetica pickled glossier hot chicken. Blue bottle synth pitchfork jawn swag kinfolk. Chambray same you probably haven't heard of them bodega boys actually, migas small batch solarpunk.
-
-        </p>
-
-        <p>Street art authentic austin ennui, fit shaman slow-carb fixie umami pabst gluten-free kale chips man bun. VHS four loko authentic normcore poke. Etsy heirloom next level cliche, echo park single-origin coffee vaporware artisan leggings brunch polaroid pork belly kinfolk. Gastropub salvia wayfarers tofu. Four dollar toast kickstarter plaid, selvage artisan pabst tonx marfa edison bulb biodiesel knausgaard grailed yuccie single-origin coffee subway tile.</p>
       </section>
 
       <section class="section">
@@ -846,6 +838,16 @@
         <p>Artisan keytar af selvage, meh freegan flannel aesthetic gentrify. Tacos godard snackwave gorpcore, locavore austin neutral milk hotel subway tile twee butcher bruh bushwick edison bulb kitsch. Plaid 90's jean shorts keffiyeh, neutra lo-fi sartorial grailed quinoa banjo selfies +1 subway tile ramps. Knausgaard tilde salvia unicorn flannel cardigan hot chicken. Tacos gentrify man braid hell of ugh cardigan snackwave green juice twee try-hard occupy.</p>
 
         <p>La croix tbh 90's flannel vinyl fashion axe single-origin coffee copper mug franzen ethical pop-up cray. Selfies mustache kinfolk selvage narwhal, snackwave forage mumblecore umami taxidermy cliche lomo food truck you probably haven't heard of them tote bag. Roof party glossier PBR&B, green juice snackwave butcher artisan kitsch. Disrupt raclette pitchfork umami four dollar toast bodega boys af. Health goth chambray man bun photo booth unicorn quinoa, sartorial heirloom salvia mlkshk wayfarers tilde. Lumbersexual jean shorts jawn pinterest. Solarpunk godard cronut celiac before they sold out, disrupt umami af farm-to-table next level.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__heading" id="prop-based-styles">Prop based styles</h2>
+
+        <p>Williamsburg deep v pop-up, neutra hot chicken kinfolk drinking vinegar knausgaard. Yr letterpress fixie tumblr, cred activated charcoal shoreditch palo santo 90's retro air plant occupy try-hard quinoa mumblecore. Butcher cronut edison bulb green juice irony flexitarian wayfarers kinfolk man braid tousled same gochujang kombucha. Coloring book raw denim fingerstache kitsch cliche single-origin coffee readymade letterpress yes plz tonx dreamcatcher photo booth skateboard food truck. Sustainable franzen authentic, chambray helvetica pickled glossier hot chicken. Blue bottle synth pitchfork jawn swag kinfolk. Chambray same you probably haven't heard of them bodega boys actually, migas small batch solarpunk.
+
+        </p>
+
+        <p>Street art authentic austin ennui, fit shaman slow-carb fixie umami pabst gluten-free kale chips man bun. VHS four loko authentic normcore poke. Etsy heirloom next level cliche, echo park single-origin coffee vaporware artisan leggings brunch polaroid pork belly kinfolk. Gastropub salvia wayfarers tofu. Four dollar toast kickstarter plaid, selvage artisan pabst tonx marfa edison bulb biodiesel knausgaard grailed yuccie single-origin coffee subway tile.</p>
       </section>
 
       <section class="section">

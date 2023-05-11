@@ -28,6 +28,8 @@
 
     :root {
       --color-primary: #1c1e21;
+      /* --color-secondary: #000; */
+      /* OR */
       --color-secondary: #333;
 
       --background-primary: #fff;
@@ -96,6 +98,20 @@
       vertical-align: top;
     }
 
+    blockquote {
+      margin: 0 0 24px;
+      padding: 8px 8px 8px 24px;
+      background-color: var(--background-secondary);
+      box-shadow:
+        0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.1),
+        inset 4px 0 0 0 #ff6995;
+    }
+
+    blockquote > strong {
+      display: block;
+      color: #ff6995;
+    }
+
     code {
       padding: 0 4px;
       overflow: hidden;
@@ -137,12 +153,17 @@
 
     .c { color: #697098; }
     .s { color: #e7ee98; }
+    /* .s { color: #c3e88d; } */
     .k, .o { color: #eb82bf; }
     .f { color: #61e884; }
+    /* .f { color: #82aaff; } */
     .b { color: #96dfef; }
+    /* .b { color: #89ddff; } */
     .p { color: #ffb86c; }
+    /* .p { color: #ffcb6b; } */
     .n { color: #bfc7d5; } /* TODO: change */
     .v { color: #bf9eee; }
+    /* .v { color: #c792ea; } */
 
     /* .k, */
     .b { font-style: italic; }
@@ -159,24 +180,6 @@
     .container--fluid {
       padding-right: 0;
       padding-left: 0;
-    }
-
-    .button {
-      min-width: auto;
-      margin: 0;
-      font-size: 0.875rem;
-      line-height: 1.5rem;
-      appearance: none;
-      text-align: center;
-      cursor: pointer;
-      color: #fff;
-      background-color: hotpink;
-      border: 2px solid hotpink;
-      border-radius: 4px;
-    }
-
-    .align-right {
-      justify-content: flex-end;
     }
 
     .header {
@@ -286,7 +289,6 @@
     }
 
     .nav--open .line:nth-child(2) {
-      /* left: -100%; */
       left: 100%;
       opacity: 0;
     }
@@ -661,7 +663,7 @@
                   <a class="nav__link" href="#pseudo">Pseudo</a>
                 </li>
                 <li class="nav__item">
-                  <a class="nav__link" href="#descendent-combinator">Descendent & Combinator</a>
+                  <a class="nav__link" href="#combinator">Combinator</a>
                 </li>
                 <li class="nav__item">
                   <a class="nav__link" href="#attribute-selectors">Attribute selectors</a>
@@ -881,39 +883,77 @@
       </section>
 
       <section class="section">
-        <h2 class="section__heading" id="descendent-combinator">Descendent & Combinator</h2>
+        <h2 class="section__heading" id="combinator">Combinator</h2>
 
-        <p>Hot chicken trust fund vaporware kickstarter. Jianbing salvia whatever DIY austin adaptogen YOLO listicle roof party lyft XOXO. Prism jianbing +1 tousled activated charcoal 8-bit vape vegan put a bird on it hexagon sus microdosing sustainable. Marxism microdosing poutine woke, you probably haven't heard of them wolf vegan four dollar toast squid pabst tonx. Vice humblebrag poke hot chicken vape.
+        <h3>Descendant combinator</h3>
 
-        </p>
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
 
-        <p>Dreamcatcher tote bag green juice bicycle rights, cred deep v pour-over. JOMO cliche gluten-free narwhal, dreamcatcher mumblecore fam vinyl everyday carry affogato knausgaard gentrify. Pinterest iceland vexillologist yes plz bodega boys celiac narwhal church-key blog franzen retro gastropub synth chillwave. Bitters meh woke fashion axe, hexagon chicharrones gorpcore tilde pinterest DIY fam next level roof party.</p>
+        <h3>Child combinator (>)</h3>
+
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
+
+        <h3>Sibling combinators (~ or +)</h3>
+
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
       </section>
 
       <section class="section">
         <h2 class="section__heading" id="attribute-selectors">Attribute selectors</h2>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam commodo condimentum semper. In elementum, sem luctus dapibus vulputate, arcu quam ultrices tortor, vel gravida eros nisl eget sem. Pellentesque vel vulputate eros. Nunc ultrices ante ac dolor viverra, in pharetra metus interdum. Maecenas vitae lacus lacus. Aenean nisl nisl, tincidunt quis tempor id, iaculis dictum urna. Duis ut elementum turpis, sed vulputate ligula. Aenean in nunc laoreet, egestas dolor et, efficitur quam. Ut sit amet aliquet turpis.</p>
+        <p>You can event create selectors based on attributes.</p>
 
-        <p>Nam tellus ipsum, imperdiet et pretium nec, tempor sed mauris. Mauris posuere, tellus eget iaculis ultrices, dui erat faucibus orci, non molestie elit ante ac diam. Proin a ipsum ultricies, aliquet lorem eleifend, ullamcorper nisl. Proin condimentum, ipsum ut venenatis vestibulum, ante magna ultricies neque, faucibus aliquet lectus nunc quis massa. Suspendisse convallis, elit id dictum consectetur, arcu felis maximus orci, id placerat urna metus eget leo. Sed bibendum turpis lorem, et commodo neque bibendum tempus. Suspendisse aliquam dictum gravida. Etiam congue egestas tortor, id rutrum metus feugiat quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras non enim nec urna vehicula fermentum quis in nisl. Aliquam sed consequat tellus. Aenean ullamcorper tincidunt mi et commodo. Proin imperdiet massa sed nibh pellentesque, non aliquet metus ullamcorper. Nullam laoreet nec ex in tristique. Sed at ipsum aliquam mi tristique dictum.</p>
+        <pre><code><span class="c">const Link = styled.a({
+  // Button base styles
+</span>
+  <span class="s">'[href]'</span><span class="o">: {</span>
+    textDecoration<span class="o">:</span> <span class="s">'none'</span>
+  <span class="o">}</span>
+<span class="c">});</span>
+
+<span class="c">const Composition = () => (
+  &lt;Link</span> <span class="f">href</span><span class="o">=</span><span class="s">'#'</span><span class="c">&gt;
+    I'm a Link
+  &lt;/Link&gt;
+  );</span></code></pre>
       </section>
 
       <section class="section">
         <h2 class="section__heading" id="at-rules">At-rules</h2>
 
-        <p>Artisan keytar af selvage, meh freegan flannel aesthetic gentrify. Tacos godard snackwave gorpcore, locavore austin neutral milk hotel subway tile twee butcher bruh bushwick edison bulb kitsch. Plaid 90's jean shorts keffiyeh, neutra lo-fi sartorial grailed quinoa banjo selfies +1 subway tile ramps. Knausgaard tilde salvia unicorn flannel cardigan hot chicken. Tacos gentrify man braid hell of ugh cardigan snackwave green juice twee try-hard occupy.</p>
+        <p>Nested at-rules such as <code>@media</code>, <code>@supports</code> and event <code>@container</code> are declared as demonstrated below.</p>
 
-        <p>La croix tbh 90's flannel vinyl fashion axe single-origin coffee copper mug franzen ethical pop-up cray. Selfies mustache kinfolk selvage narwhal, snackwave forage mumblecore umami taxidermy cliche lomo food truck you probably haven't heard of them tote bag. Roof party glossier PBR&B, green juice snackwave butcher artisan kitsch. Disrupt raclette pitchfork umami four dollar toast bodega boys af. Health goth chambray man bun photo booth unicorn quinoa, sartorial heirloom salvia mlkshk wayfarers tilde. Lumbersexual jean shorts jawn pinterest. Solarpunk godard cronut celiac before they sold out, disrupt umami af farm-to-table next level.</p>
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
+
+        <p>For examples of <code>@keyframes</code>, <code>@counter-style</code>, <code>@font-face</code> and <code>@property</code>, refer to <a href="/api/#global-styles">API</a> section.</p>
       </section>
 
       <section class="section">
         <h2 class="section__heading" id="prop-based-styles">Prop based styles</h2>
 
-        <p>Williamsburg deep v pop-up, neutra hot chicken kinfolk drinking vinegar knausgaard. Yr letterpress fixie tumblr, cred activated charcoal shoreditch palo santo 90's retro air plant occupy try-hard quinoa mumblecore. Butcher cronut edison bulb green juice irony flexitarian wayfarers kinfolk man braid tousled same gochujang kombucha. Coloring book raw denim fingerstache kitsch cliche single-origin coffee readymade letterpress yes plz tonx dreamcatcher photo booth skateboard food truck. Sustainable franzen authentic, chambray helvetica pickled glossier hot chicken. Blue bottle synth pitchfork jawn swag kinfolk. Chambray same you probably haven't heard of them bodega boys actually, migas small batch solarpunk.
+        <p>Property matching or pattern matching can be achieved by calling the <code>prop</code> method on the <code>style</code> helper.</p>
 
-        </p>
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
 
-        <p>Street art authentic austin ennui, fit shaman slow-carb fixie umami pabst gluten-free kale chips man bun. VHS four loko authentic normcore poke. Etsy heirloom next level cliche, echo park single-origin coffee vaporware artisan leggings brunch polaroid pork belly kinfolk. Gastropub salvia wayfarers tofu. Four dollar toast kickstarter plaid, selvage artisan pabst tonx marfa edison bulb biodiesel knausgaard grailed yuccie single-origin coffee subway tile.</p>
+        <p>You can even specify a function that takes the <code>prop</code> being matched is its only argument.</p>
+
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
+
+        <p>To match against multiple properties, just use one of <code>all</code>, <code>any</code> or <code>none</code> methods on the <code>style.props</code> helper.</p>
+
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
+
+        <p>When using a function for matching multiple props, be sure to pass in <strong>all</strong> props or the props object if you don't want to destructure.</p>
+
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
+
+        <blockquote>
+          <strong>IMPORTANT:</strong>
+
+          <p>in order to avoid maintaining a whitelist of props that are not meant to be passed down to the underlying <code>HTML</code> tag, all props used in any of the pattern matching functions will be treated as <i>transient</i> props and will <strong>not</strong> flow downward.</p>
+        </blockquote>
+
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
       </section>
 
       <section class="section">
@@ -927,9 +967,17 @@
       <section class="section">
         <h2 class="section__heading" id="hoc-styling">HOC styling</h2>
 
-        <p>Lo-fi messenger bag schlitz locavore affogato unicorn sustainable knausgaard small batch kombucha YOLO. IPhone distillery single-origin coffee tilde chillwave four loko man braid meditation next level cray sartorial. Fingerstache humblebrag williamsburg bushwick everyday carry schlitz DIY quinoa normcore iceland activated charcoal. Gatekeep cliche live-edge tote bag try-hard beard affogato vexillologist asymmetrical intelligentsia kombucha JOMO. Lyft vaporware glossier, cray raclette lomo VHS master cleanse humblebrag next level hot chicken. Live-edge DSA poke trust fund meggings authentic everyday carry, cardigan stumptown knausgaard. Pok pok same austin selvage activated charcoal.</p>
+        <p>There is a mechanism for defining Components that are <i>"generic"</i>, basically a Higher Order Component or HOC that accepts a <code>Component</code> as its only argument.</p>
 
-        <p>Migas yuccie yr paleo mixtape grailed shaman, ramps mumblecore skateboard cred. Chartreuse keytar pabst VHS cray sustainable. Aesthetic shabby chic small batch mixtape pug. Blackbird spyplane quinoa literally before they sold out hashtag pug. Selfies pug direct trade grailed fit, art party coloring book tilde master cleanse kogi vegan bushwick sriracha.</p>
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
+
+        <p>Generic components will pass all props received down to the wrapped component. If the component being wrapped is a custom one, ensure that the <code>className</code> prop is passed down</p>
+
+        <pre><code><span class="c">// code example(s) coming soon</span></code></pre>
+
+        <p>All Generic components have all the same features as other StyledComponents including all the chainable methods.</p>
+
+        <pre><code><span class="c">// code example of extending from GenericComponent coming soon</span></code></pre>
       </section>
     </main>
   </div>

@@ -1,0 +1,8 @@
+{
+  "boolean": true,
+  "object": {
+    "__proto__": null
+  },
+  "string": "atomic state",
+  "symbol": "Symbol(something-special)"
+}

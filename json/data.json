@@ -1,6 +1,5 @@
 {
   "array": ["react", "state", "atom"],
-  "boolean": true,
   "object": {
     "__proto__": null
   },

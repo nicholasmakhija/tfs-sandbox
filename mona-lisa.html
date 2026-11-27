@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mona Lisa</title>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+      font-size: 16px;
+      line-height: 24px;
+      font-family: Verdana, sans-serif;
+      color: #333;
+      background-color: #cb7184;
+    }
+
+    *, :after, :before {
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 45rem;
+      width: 100%;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .flex--center {
+      display: flex;
+      justify-content: center;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.125rem solid transparent;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      margin: 0 0.25rem;
+      padding: 0.25rem 0.5625rem;
+      width: auto;
+      color: #fff;
+      font-family: Arial;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .button--green { background-color: green; }
+    .button--red { background-color: red; }
+    
+    .col {
+      width: 50%;
+    }
+
+    .frame {
+      position: relative;
+      border: solid 30px #ffbf00;
+      border-right-color: #a67c00;
+      border-left-color: #a67c00;
+    }
+
+    .floating {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="flex--center">
+      <div class="frame">
+        <img src="assets/generated-mona-lisa-simpson.webp" alt="">
+        <div class="floating">
+          <svg id="mouth" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+             <path id="dynamicLine" d="M 410 387 Q 410 387 535 387" stroke="#0d0b04" stroke-width="4" fill="transparent" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTE: mouth width = 125 -->
+
+  <!-- NOTE: ORIGINAL -->
+  <!-- <div class="container flex--center">
+    <label for="curveSlider">Bend Right End (Up / Down): </label>
+    <input type="range" id="curveSlider" min="-80" max="80" value="0">
+
+    <svg width="400" height="200" style="border: 1px solid #ccc; display: block; margin-top: 10px;">
+      <path id="dynamicLine" d="M 50 100 Q 200 100 350 100" stroke="#007BFF" stroke-width="4" fill="transparent" />
+    </svg>
+  </div>
+
+   <script>
+    const path = document.getElementById('dynamicLine');
+    const slider = document.getElementById('curveSlider');
+
+    // Anchor coordinates
+    const startX = 50;
+    const startY = 100;
+    const endX = 350;
+    const baseEndY = 100;
+    // Control point X (placed closer to the right end to localize the curve)
+    const controlX = 250; 
+    
+
+    slider.addEventListener('input', (e) => {
+      const offset = parseInt(e.target.value, 10);
+
+      console.log('offset', offset);
+
+      // Move the right end up (negative Y) or down (positive Y)
+      const currentEndY = baseEndY + offset;
+
+      // Keep the control point near the original Y axis to create a smooth bend
+      // Adjust the multiplier (e.g., 0.2) to change how sharply it curves
+      const controlY = baseEndY + (offset * 0.1);
+
+      // Update the SVG path 'd' attribute
+      const d = `M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${currentEndY}`;
+      path.setAttribute('d', d);
+    });
+  </script> -->
+
+  <div class="container flex--center">
+    <label for="curveSlider">Play with emotions: </label>
+    <input type="range" id="curveSlider" min="-20" max="20" value="0">
+  </div>
+
+  <script>
+    const path = document.getElementById('dynamicLine');
+    const slider = document.getElementById('curveSlider');
+    
+    // Anchor coordinates
+    const startX = 410;
+    const startY = 387;
+    const endX = 535;
+    const baseEndY = 387;
+    
+    // Control point X (placed closer to the right end to localize the curve)
+    const controlX = 460; 
+
+    slider.addEventListener('input', (e) => {
+      const offset = parseInt(e.target.value, 10);
+
+      console.log('offset', offset);
+
+      // Move the right end up (negative Y) or down (positive Y)
+      const currentEndY = baseEndY + offset;
+
+      // Keep the control point near the original Y axis to create a smooth bend
+      // Adjust the multiplier (e.g., 0.2) to change how sharply it curves
+      const controlY = baseEndY + (offset * 0.1);
+
+      // Update the SVG path 'd' attribute
+      const d = `M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${currentEndY}`;
+      path.setAttribute('d', d);
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
